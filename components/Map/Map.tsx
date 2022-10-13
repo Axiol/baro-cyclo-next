@@ -1,8 +1,26 @@
+import { useEffect } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
+import { LatLngTuple } from 'leaflet';
 
 import 'leaflet/dist/leaflet.css';
 
-const Map: React.FC = () => {
+interface MapProps {
+  position: LatLngTuple;
+}
+
+const Map: React.FC<MapProps> = ({ position }) => {
+  const UseMapComponent = () => {
+    const map = useMap();
+
+    useEffect(() => {
+      map.setView(position, 12, {
+        animate: true,
+      });
+    });
+
+    return null;
+  };
+
   return (
     <MapContainer
       className='absolute inset-0'
@@ -19,11 +37,7 @@ const Map: React.FC = () => {
         accessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
         url='https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}'
       />
-      <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
+      <UseMapComponent />
     </MapContainer>
   );
 };
