@@ -1,14 +1,29 @@
 import { useEffect } from 'react';
-import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
+import {
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+  Polygon,
+  useMap,
+} from 'react-leaflet';
 import { LatLngTuple } from 'leaflet';
 
 import 'leaflet/dist/leaflet.css';
 
 interface MapProps {
   position: LatLngTuple;
+  places:
+    | {
+        _id: string;
+        name: string;
+        center: LatLngTuple;
+        borders: LatLngTuple[];
+      }[]
+    | undefined;
 }
 
-const Map: React.FC<MapProps> = ({ position }) => {
+const Map: React.FC<MapProps> = ({ position, places }) => {
   const UseMapComponent = () => {
     const map = useMap();
 
@@ -40,6 +55,22 @@ const Map: React.FC<MapProps> = ({ position }) => {
         url='https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}'
       />
       <UseMapComponent />
+
+      {places &&
+        places.map((place) => {
+          return (
+            <Polygon
+              key={place._id}
+              pathOptions={purpleOptions}
+              positions={place.borders}
+              eventHandlers={{
+                click: () => {
+                  // console.log(place.name);
+                },
+              }}
+            />
+          );
+        })}
     </MapContainer>
   );
 };
