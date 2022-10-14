@@ -21,9 +21,11 @@ const Map: React.FC<MapProps> = ({ position }) => {
     return null;
   };
 
+  const purpleOptions = { color: 'purple' };
+
   return (
     <MapContainer
-      className='absolute inset-0'
+      className='absolute inset-0 z-0'
       center={[51.505, -0.09]}
       zoom={13}
       scrollWheelZoom={false}
