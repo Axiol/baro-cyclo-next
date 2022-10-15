@@ -16,7 +16,8 @@
     "incremental": true,
     "paths": {
       "@components/*": ["./components/*"],
-      "@libs/*": ["./libs/*"]
+      "@libs/*": ["./libs/*"],
+      "@interfaces/*": ["./interfaces/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

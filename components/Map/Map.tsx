@@ -10,20 +10,23 @@ import {
 import { LatLngTuple } from 'leaflet';
 
 import 'leaflet/dist/leaflet.css';
+import { PlaceProps } from '@interfaces/interfaces';
 
 interface MapProps {
   position: LatLngTuple;
-  places:
-    | {
-        _id: string;
-        name: string;
-        center: LatLngTuple;
-        borders: LatLngTuple[];
-      }[]
-    | undefined;
+  places: PlaceProps[] | undefined;
+  onPlaceSelect: (place: PlaceProps) => void;
+  showAll: boolean;
+  borders: LatLngTuple[];
 }
 
-const Map: React.FC<MapProps> = ({ position, places }) => {
+const Map: React.FC<MapProps> = ({
+  position,
+  places,
+  onPlaceSelect,
+  showAll,
+  borders,
+}) => {
   const UseMapComponent = () => {
     const map = useMap();
 
@@ -55,8 +58,8 @@ const Map: React.FC<MapProps> = ({ position, places }) => {
         url='https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}'
       />
       <UseMapComponent />
-
-      {places &&
+      {showAll &&
+        places &&
         places.map((place) => {
           return (
             <Polygon
@@ -65,12 +68,15 @@ const Map: React.FC<MapProps> = ({ position, places }) => {
               positions={place.borders}
               eventHandlers={{
                 click: () => {
-                  // console.log(place.name);
+                  onPlaceSelect(place);
                 },
               }}
             />
           );
         })}
+      (!showAll && borders && (
+      <Polygon pathOptions={purpleOptions} positions={borders} />
+      ))
     </MapContainer>
   );
 };
