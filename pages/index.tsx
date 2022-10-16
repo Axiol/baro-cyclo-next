@@ -6,6 +6,7 @@ import { GetStaticProps } from 'next';
 import { PlaceProps } from '@interfaces/interfaces';
 import Map from '@components/Map';
 import Search from '@components/Search';
+import Summary from '@components/Summary';
 
 interface HomeProps {
   places?: PlaceProps[];
@@ -29,28 +30,27 @@ export const getServerSideProps: GetStaticProps = async () => {
 };
 
 const Home: NextPage<HomeProps> = ({ places }) => {
-  const [position, setPosition] = useState<LatLngTuple>([50.6337, 5.56759]);
   const [showAll, setShowAll] = useState<boolean>(true);
-  const [borders, setBorders] = useState<LatLngTuple[]>([]);
+  const [place, setPlace] = useState<PlaceProps>();
 
   const handlePlaceSelect = (place: PlaceProps) => {
     console.log(place);
 
-    setPosition(place.center);
-    setBorders(place.borders);
+    setPlace(place);
     setShowAll(false);
   };
 
   return (
     <div className='min-h-screen text-white'>
       <Map
-        position={position}
+        position={place?.center}
         places={places}
         onPlaceSelect={handlePlaceSelect}
         showAll={showAll}
-        borders={borders}
+        borders={place?.borders}
       />
       <Search />
+      {!showAll && <Summary name={place?.name} />}
     </div>
   );
 };

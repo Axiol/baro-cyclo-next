@@ -1,6 +1,8 @@
+import Card from '@components/Card';
+
 const Search: React.FC = () => {
   return (
-    <div className='absolute top-2.5 right-2.5 z-10 w-full max-w-xs bg-base-100 rounded-box p-3 shadow-lg'>
+    <Card className='absolute top-2.5 right-2.5 z-10 max-w-xs'>
       <div className='form-control w-full max-w-xs'>
         <label className='label sr-only'>
           <span className='label-text'>Recherchez votre ville</span>
@@ -11,7 +13,7 @@ const Search: React.FC = () => {
           className='input input-bordered w-full max-w-xs'
         />
       </div>
-    </div>
+    </Card>
   );
 };
 

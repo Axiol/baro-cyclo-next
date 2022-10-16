@@ -13,19 +13,19 @@ import 'leaflet/dist/leaflet.css';
 import { PlaceProps } from '@interfaces/interfaces';
 
 interface MapProps {
-  position: LatLngTuple;
-  places: PlaceProps[] | undefined;
+  position?: LatLngTuple;
+  places?: PlaceProps[];
   onPlaceSelect: (place: PlaceProps) => void;
   showAll: boolean;
-  borders: LatLngTuple[];
+  borders?: LatLngTuple[];
 }
 
 const Map: React.FC<MapProps> = ({
-  position,
+  position = [50.6337, 5.56759],
   places,
   onPlaceSelect,
   showAll,
-  borders,
+  borders = [],
 }) => {
   const UseMapComponent = () => {
     const map = useMap();
