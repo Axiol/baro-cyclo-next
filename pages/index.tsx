@@ -34,10 +34,23 @@ const Home: NextPage<HomeProps> = ({ places }) => {
   const [place, setPlace] = useState<PlaceProps>();
 
   const handlePlaceSelect = (place: PlaceProps) => {
-    console.log(place);
-
     setPlace(place);
     setShowAll(false);
+  };
+
+  const handleSearchSelect = async (place: PlaceProps) => {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places/${place._id}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    const apiPlace = await res.json();
+
+    handlePlaceSelect(apiPlace.place);
   };
 
   return (
@@ -49,7 +62,7 @@ const Home: NextPage<HomeProps> = ({ places }) => {
         showAll={showAll}
         borders={place?.borders}
       />
-      <Search />
+      <Search onPlaceSelect={handleSearchSelect} />
       {!showAll && <Summary name={place?.name} />}
     </div>
   );
