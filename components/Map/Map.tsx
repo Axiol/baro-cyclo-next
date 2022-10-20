@@ -21,7 +21,7 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({
-  position = [50.6337, 5.56759],
+  position,
   places,
   onPlaceSelect,
   showAll,
@@ -30,8 +30,10 @@ const Map: React.FC<MapProps> = ({
   const UseMapComponent = () => {
     const map = useMap();
 
+    console.log(position);
+
     useEffect(() => {
-      map.setView(position, 12, {
+      map.setView(position ? position : [50.6337, 5.56759], position ? 12 : 9, {
         animate: true,
       });
     });
@@ -42,12 +44,7 @@ const Map: React.FC<MapProps> = ({
   const purpleOptions = { color: 'purple' };
 
   return (
-    <MapContainer
-      className='absolute inset-0 z-0'
-      center={[51.505, -0.09]}
-      zoom={13}
-      scrollWheelZoom={false}
-    >
+    <MapContainer className='absolute inset-0 z-0' scrollWheelZoom={false}>
       <TileLayer
         attribution='Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
         maxZoom={18}

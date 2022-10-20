@@ -62,10 +62,10 @@ const Home: NextPage<HomeProps> = ({ places }) => {
     <div className='min-h-screen text-white'>
       <Map
         position={place?.center}
+        borders={place?.borders}
         places={places}
         onPlaceSelect={handlePlaceSelect}
         showAll={showAll}
-        borders={place?.borders}
       />
       <Search onPlaceSelect={handleSearchSelect} />
       {!showAll && <Summary onClose={handleSummaryClose} name={place?.name} />}
