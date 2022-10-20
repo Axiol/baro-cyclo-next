@@ -53,6 +53,11 @@ const Home: NextPage<HomeProps> = ({ places }) => {
     handlePlaceSelect(apiPlace.place);
   };
 
+  const handleSummaryClose = () => {
+    setPlace(undefined);
+    setShowAll(true);
+  };
+
   return (
     <div className='min-h-screen text-white'>
       <Map
@@ -63,7 +68,7 @@ const Home: NextPage<HomeProps> = ({ places }) => {
         borders={place?.borders}
       />
       <Search onPlaceSelect={handleSearchSelect} />
-      {!showAll && <Summary name={place?.name} />}
+      {!showAll && <Summary onClose={handleSummaryClose} name={place?.name} />}
     </div>
   );
 };

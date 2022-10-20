@@ -33,7 +33,7 @@ const Search: React.FC<SearchProps> = ({ onPlaceSelect }) => {
   }, [query]);
 
   return (
-    <Card className='absolute top-2.5 right-2.5 z-10 max-w-xs text-black'>
+    <Card className='absolute top-2.5 right-2.5 z-10 max-w-xs text-primary-content'>
       <div className='form-control w-full max-w-xs'>
         <label className='label sr-only'>
           <span className='label-text'>Recherchez votre ville</span>

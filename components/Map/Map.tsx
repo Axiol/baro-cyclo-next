@@ -74,7 +74,7 @@ const Map: React.FC<MapProps> = ({
             />
           );
         })}
-      (!showAll && borders && (
+      ((!showAll && borders) && (
       <Polygon pathOptions={purpleOptions} positions={borders} />
       ))
     </MapContainer>
