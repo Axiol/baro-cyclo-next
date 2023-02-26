@@ -14,6 +14,7 @@ const places = async (req: NextApiRequest, res: NextApiResponse) => {
         .aggregate([
           {
             $search: {
+              index: "places_name",
               autocomplete: {
                 query: `${query}`,
                 path: 'name',
