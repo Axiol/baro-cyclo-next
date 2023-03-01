@@ -16,15 +16,8 @@ const Search: React.FC<SearchProps> = ({ onPlaceSelect }) => {
   useEffect(() => {
     if (query.length >= 2) {
       const fetchPlaces = async () => {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places/search/${query}`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
+        const res = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places/search/${query}`, {cache: 'no-store'});
+
         const places = await res.json();
 
         setSearch(places.places);
