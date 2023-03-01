@@ -1,6 +1,6 @@
 const Home = async () => {
   return (
-    <p className={'text-right'}>Salut</p>
+    <p className={'absolute text-right z-20'}>Salut</p>
   )
 };
 

@@ -1,4 +1,5 @@
 import Map from '@components/Map';
+import Search from '@components/Search';
 
 import '../styles/globals.css';
 
@@ -26,6 +27,7 @@ export default async function RootLayout({children}: {
     <html lang="fr">
     <body>
       <Map places={places.data}>{children}</Map>
+      <Search />
     </body>
     </html>
   );
