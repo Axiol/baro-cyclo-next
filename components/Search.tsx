@@ -1,10 +1,12 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 import Card from '@components/Card';
 import { PlaceProps } from '@interfaces/interfaces';
 
 interface SearchProps {
-  onPlaceSelect: (place: PlaceProps) => void;
+  onPlaceSelect?: (place: PlaceProps) => void;
 }
 
 const Search: React.FC<SearchProps> = ({ onPlaceSelect }) => {
@@ -57,7 +59,7 @@ const Search: React.FC<SearchProps> = ({ onPlaceSelect }) => {
                     onClick={() => {
                       setSearch([]);
                       setQuery('');
-                      onPlaceSelect(place);
+                      // onPlaceSelect(place);
                     }}
                     className='w-full text-left py-3 text-secondary hover:text-secondary-focus focus:text-secondary-focus'
                   >
