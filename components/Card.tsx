@@ -1,6 +1,6 @@
 interface CardProps {
-  className?: string;
-  children?: React.ReactNode;
+  className?: string
+  children?: React.ReactNode
 }
 
 const Card: React.FC<CardProps> = ({ className, children }) => {
@@ -10,7 +10,7 @@ const Card: React.FC<CardProps> = ({ className, children }) => {
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

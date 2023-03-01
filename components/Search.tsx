@@ -1,31 +1,34 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-import Card from '@components/Card';
-import { PlaceProps } from '@interfaces/interfaces';
+import Card from '@components/Card'
+import { PlaceProps } from '@interfaces/interfaces'
 
 interface SearchProps {
-  onPlaceSelect?: (place: PlaceProps) => void;
+  onPlaceSelect?: (place: PlaceProps) => void
 }
 
 const Search: React.FC<SearchProps> = ({ onPlaceSelect }) => {
-  const [query, setQuery] = useState<string>('');
-  const [search, setSearch] = useState<PlaceProps[]>([]);
+  const [query, setQuery] = useState<string>('')
+  const [search, setSearch] = useState<PlaceProps[]>([])
 
   useEffect(() => {
     if (query.length >= 2) {
       const fetchPlaces = async () => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places/search/${query}`, {cache: 'no-store'});
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places/search/${query}`,
+          { cache: 'no-store' }
+        )
 
-        const places = await res.json();
+        const places = await res.json()
 
-        setSearch(places.places);
-      };
+        setSearch(places.places)
+      }
 
-      fetchPlaces();
+      fetchPlaces()
     }
-  }, [query]);
+  }, [query])
 
   return (
     <Card className='absolute top-2.5 right-2.5 z-10 max-w-xs text-primary-content'>
@@ -50,8 +53,8 @@ const Search: React.FC<SearchProps> = ({ onPlaceSelect }) => {
                 <li key={index}>
                   <button
                     onClick={() => {
-                      setSearch([]);
-                      setQuery('');
+                      setSearch([])
+                      setQuery('')
                       // onPlaceSelect(place);
                     }}
                     className='w-full text-left py-3 text-secondary hover:text-secondary-focus focus:text-secondary-focus'
@@ -60,13 +63,13 @@ const Search: React.FC<SearchProps> = ({ onPlaceSelect }) => {
                   </button>
                   {index + 1 < search.length && <hr className='' />}
                 </li>
-              );
+              )
             })}
           </ul>
         </Card>
       )}
     </Card>
-  );
-};
+  )
+}
 
-export default Search;
+export default Search

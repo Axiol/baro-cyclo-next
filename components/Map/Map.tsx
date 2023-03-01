@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 import {
   MapContainer,
   Marker,
@@ -8,31 +8,33 @@ import {
   TileLayer,
   Polygon,
   useMap,
-} from 'react-leaflet';
-import { LatLngTuple } from 'leaflet';
+} from 'react-leaflet'
+import { LatLngTuple } from 'leaflet'
 
-import 'leaflet/dist/leaflet.css';
-import { PlaceProps } from '@interfaces/interfaces';
+import 'leaflet/dist/leaflet.css'
+import { PlaceProps } from '@interfaces/interfaces'
 
 interface MapProps {
-  position?: LatLngTuple;
-  places?: PlaceProps[];
-  onPlaceSelect?: (place: PlaceProps) => void;
-  showAll?: boolean;
-  borders?: LatLngTuple[];
-  children?: React.ReactNode;
+  position?: LatLngTuple
+  places?: PlaceProps[]
+  onPlaceSelect?: (place: PlaceProps) => void
+  showAll?: boolean
+  borders?: LatLngTuple[]
+  children?: React.ReactNode
 }
 
 const getPlaces = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places`, {cache: 'no-store'});
+  const res = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places`, {
+    cache: 'no-store',
+  })
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    throw new Error('Failed to fetch data')
   }
 
-  console.log(res.json());
+  console.log(res.json())
 
-  return res.json();
+  return res.json()
 }
 
 const Map = ({
@@ -43,21 +45,21 @@ const Map = ({
   borders = [],
   children,
 }: MapProps) => {
-  console.log(places);
+  console.log(places)
 
   const UseMapComponent = () => {
-    const map = useMap();
+    const map = useMap()
 
     useEffect(() => {
       map.setView(position ? position : [50.6337, 5.56759], position ? 12 : 9, {
         animate: true,
-      });
-    });
+      })
+    })
 
-    return null;
-  };
+    return null
+  }
 
-  const purpleOptions = { color: 'purple' };
+  const purpleOptions = { color: 'purple' }
 
   return (
     <>
@@ -83,12 +85,12 @@ const Map = ({
                 eventHandlers={{
                   click: () => {
                     if (onPlaceSelect) {
-                      onPlaceSelect(place);
+                      onPlaceSelect(place)
                     }
                   },
                 }}
               />
-            );
+            )
           })}
         ((!showAll && borders) && (
         <Polygon pathOptions={purpleOptions} positions={borders} />
@@ -96,7 +98,7 @@ const Map = ({
       </MapContainer>
       {children}
     </>
-  );
-};
+  )
+}
 
-export default Map;
+export default Map
