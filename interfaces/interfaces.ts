@@ -1,8 +1,8 @@
-import { LatLngTuple } from 'leaflet';
+import { LatLngTuple } from 'leaflet'
 
 export interface PlaceProps {
-  _id: string;
-  name: string;
-  center: LatLngTuple;
-  borders: LatLngTuple[];
+  _id: string
+  name: string
+  center: LatLngTuple
+  borders: LatLngTuple[]
 }
