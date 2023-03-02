@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import clientPromise from '@libs/mongodb'
-import { ObjectId } from 'mongodb'
 
 const place = async (req: NextApiRequest, res: NextApiResponse) => {
   const client = await clientPromise
@@ -10,9 +9,7 @@ const place = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (req.method) {
     case 'GET':
       const { id } = req.query
-      const place = await db
-        .collection('places')
-        .findOne({ _id: new ObjectId(id?.toString()) })
+      const place = await db.collection('places').findOne({ name: id })
 
       res.json({ status: 200, place: place })
       break
