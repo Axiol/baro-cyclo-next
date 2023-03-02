@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import Card from '@components/Card'
 
 interface SummaryProps {
@@ -13,7 +15,10 @@ const Summary: React.FC<SummaryProps> = ({ name, onClose }) => {
           <h2 className='text-xl font-extrabold'>{name}</h2>
           <span className='inline-block ml-1'>- 3 avis</span>
         </div>
-        <button className='text-neutral hover:text-neutral-focus focus:text-neutral-focus'>
+        <Link
+          href={'/'}
+          className='text-neutral hover:text-neutral-focus focus:text-neutral-focus'
+        >
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='28'
@@ -24,7 +29,7 @@ const Summary: React.FC<SummaryProps> = ({ name, onClose }) => {
           >
             <path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z' />
           </svg>
-        </button>
+        </Link>
       </div>
       <h3 className='text-l font-extrabold'>Général</h3>
       <progress

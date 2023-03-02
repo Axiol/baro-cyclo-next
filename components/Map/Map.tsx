@@ -10,9 +10,11 @@ import {
   useMap,
 } from 'react-leaflet'
 import { LatLngTuple } from 'leaflet'
+import { useRouter } from 'next/navigation'
+
+import { PlaceProps } from '@interfaces/interfaces'
 
 import 'leaflet/dist/leaflet.css'
-import { PlaceProps } from '@interfaces/interfaces'
 
 interface MapProps {
   position?: LatLngTuple
@@ -23,20 +25,6 @@ interface MapProps {
   children?: React.ReactNode
 }
 
-const getPlaces = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places`, {
-    cache: 'no-store',
-  })
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-
-  console.log(res.json())
-
-  return res.json()
-}
-
 const Map = ({
   position,
   places,
@@ -45,7 +33,7 @@ const Map = ({
   borders = [],
   children,
 }: MapProps) => {
-  console.log(places)
+  const router = useRouter()
 
   const UseMapComponent = () => {
     const map = useMap()
@@ -83,11 +71,7 @@ const Map = ({
                 pathOptions={purpleOptions}
                 positions={place.borders}
                 eventHandlers={{
-                  click: () => {
-                    if (onPlaceSelect) {
-                      onPlaceSelect(place)
-                    }
-                  },
+                  click: () => router.push(`/${place.name}`),
                 }}
               />
             )
