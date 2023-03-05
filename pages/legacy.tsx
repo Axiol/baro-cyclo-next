@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { LatLngTuple } from 'leaflet';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
+import { useState } from 'react'
+import { LatLngTuple } from 'leaflet'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
 
-import { PlaceProps } from '@interfaces/interfaces';
-import Map from '@components/Map';
-import Search from '@components/Search';
-import Summary from '@components/Summary';
+import { PlaceProps } from '@interfaces/interfaces'
+import Map from '@components/Map'
+import Search from '@components/Search'
+import Summary from '@components/Summary'
 
 interface HomeProps {
-  places?: PlaceProps[];
+  places?: PlaceProps[]
 }
 
 export const getServerSideProps: GetStaticProps = async () => {
@@ -19,24 +19,24 @@ export const getServerSideProps: GetStaticProps = async () => {
     headers: {
       'Content-Type': 'application/json',
     },
-  });
-  const places = await res.json();
+  })
+  const places = await res.json()
 
   return {
     props: {
       places: places.data,
     },
-  };
-};
+  }
+}
 
 const Home: NextPage<HomeProps> = ({ places }) => {
-  const [showAll, setShowAll] = useState<boolean>(true);
-  const [place, setPlace] = useState<PlaceProps>();
+  const [showAll, setShowAll] = useState<boolean>(true)
+  const [place, setPlace] = useState<PlaceProps>()
 
   const handlePlaceSelect = (place: PlaceProps) => {
-    setPlace(place);
-    setShowAll(false);
-  };
+    setPlace(place)
+    setShowAll(false)
+  }
 
   const handleSearchSelect = async (place: PlaceProps) => {
     const res = await fetch(
@@ -47,16 +47,16 @@ const Home: NextPage<HomeProps> = ({ places }) => {
           'Content-Type': 'application/json',
         },
       }
-    );
-    const apiPlace = await res.json();
+    )
+    const apiPlace = await res.json()
 
-    handlePlaceSelect(apiPlace.place);
-  };
+    handlePlaceSelect(apiPlace.place)
+  }
 
   const handleSummaryClose = () => {
-    setPlace(undefined);
-    setShowAll(true);
-  };
+    setPlace(undefined)
+    setShowAll(true)
+  }
 
   return (
     <div className='min-h-screen text-white'>
@@ -68,9 +68,9 @@ const Home: NextPage<HomeProps> = ({ places }) => {
         showAll={showAll}
       />
       <Search onPlaceSelect={handleSearchSelect} />
-      {!showAll && <Summary onClose={handleSummaryClose} name={place?.name} />}
+      {!showAll && <Summary name={place?.name} />}
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
