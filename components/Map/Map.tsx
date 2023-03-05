@@ -71,7 +71,7 @@ const Map = ({
                 pathOptions={purpleOptions}
                 positions={place.borders}
                 eventHandlers={{
-                  click: () => router.push(`/${place.name}`),
+                  click: () => router.push(`/ville/${place.name}`),
                 }}
               />
             )

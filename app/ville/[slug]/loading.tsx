@@ -6,7 +6,7 @@ const loadingPlace = () => {
     <>
       <div className='flex justify-between mb-4 items-center'>
         <div className='w-full flex items-center'>
-          <Skeleton type='sumTitle' className='w-full mb-1.5' />
+          <Skeleton type='sumTitle' className='w-full mb-0.5' />
         </div>
         <Link
           href={'/'}
