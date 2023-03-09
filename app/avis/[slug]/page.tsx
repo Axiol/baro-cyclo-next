@@ -225,13 +225,20 @@ const Review = ({ params }: { params: { slug: string } }) => {
         >
           Précédent
         </button>
-        <button
-          disabled={page === 5}
-          onClick={nextPage}
-          className='btn btn-secondary'
-        >
-          Suivant
-        </button>
+        {page < 5 && (
+          <button
+            disabled={page === 5}
+            onClick={nextPage}
+            className='btn btn-secondary'
+          >
+            Suivant
+          </button>
+        )}
+        {page === 5 && (
+          <button disabled={page !== 5} className='btn btn-secondary'>
+            Sauvegarder
+          </button>
+        )}
       </div>
     </>
   )
