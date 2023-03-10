@@ -1,17 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 
-import clientPromise from '@libs/mongodb'
-
 const places = async (req: NextApiRequest, res: NextApiResponse) => {
-  const client = await clientPromise
-  const db = client.db('baro-cyclo')
-
   const prisma = new PrismaClient()
 
   switch (req.method) {
     case 'GET':
-      const places = await db.collection('places').find().toArray()
+      const places = await prisma.place.findMany()
+
+      for (let i = 0; i < places.length; i++) {
+        places[i].center = JSON.parse(places[i].center)
+        places[i].borders = JSON.parse(places[i].borders)
+      }
+
       res.json({ status: 200, data: places })
       break
 
