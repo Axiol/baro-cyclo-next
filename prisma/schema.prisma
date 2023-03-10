@@ -15,8 +15,8 @@ datasource db {
 model Place {
   id      String   @id @default(cuid())
   name    String
-  center  Json
-  borders Json
+  center  String
+  borders String   @db.LongText
   Review  Review[]
 }
 
