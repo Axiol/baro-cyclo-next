@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
   MapContainer,
   Marker,
@@ -67,7 +67,7 @@ const Map = ({
           places.map((place) => {
             return (
               <Polygon
-                key={place._id}
+                key={place.id}
                 pathOptions={purpleOptions}
                 positions={place.borders}
                 eventHandlers={{
