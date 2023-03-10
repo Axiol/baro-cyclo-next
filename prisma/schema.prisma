@@ -23,7 +23,7 @@ model Place {
 model Review {
   id           String   @id @default(cuid())
   creationDate DateTime @default(now())
-  score        Json
+  score        String   @db.LongText
   placeId      String
   place        Place    @relation(fields: [placeId], references: [id])
 }
