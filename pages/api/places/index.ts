@@ -8,11 +8,6 @@ const places = async (req: NextApiRequest, res: NextApiResponse) => {
     case 'GET':
       const places = await prisma.place.findMany()
 
-      for (let i = 0; i < places.length; i++) {
-        places[i].center = JSON.parse(places[i].center)
-        places[i].borders = JSON.parse(places[i].borders)
-      }
-
       res.json({ status: 200, data: places })
       break
 
@@ -31,8 +26,10 @@ const places = async (req: NextApiRequest, res: NextApiResponse) => {
         .create({
           data: {
             name: body.name,
-            center: JSON.stringify(body.center),
-            borders: JSON.stringify(body.borders),
+            geoData: {
+              center: body.center,
+              borders: body.borders,
+            },
           },
         })
         .catch(async (e) => {

@@ -9,17 +9,16 @@ import {
   Polygon,
   useMap,
 } from 'react-leaflet'
-import { LatLngTuple } from 'leaflet'
+import { LatLngExpression, LatLngTuple } from 'leaflet'
 import { useRouter } from 'next/navigation'
-
-import { PlaceProps } from '@interfaces/interfaces'
+import { Place, Prisma } from '@prisma/client'
 
 import 'leaflet/dist/leaflet.css'
 
 interface MapProps {
   position?: LatLngTuple
-  places?: PlaceProps[]
-  onPlaceSelect?: (place: PlaceProps) => void
+  places?: Place[]
+  onPlaceSelect?: (place: Place) => void
   showAll?: boolean
   borders?: LatLngTuple[]
   children?: React.ReactNode
@@ -65,16 +64,17 @@ const Map = ({
         {showAll &&
           places &&
           places.map((place) => {
-            return (
+            const geoData = place.geoData as Prisma.JsonObject
+            return geoData ? (
               <Polygon
                 key={place.id}
                 pathOptions={purpleOptions}
-                positions={place.borders}
+                positions={geoData.borders as LatLngExpression[]}
                 eventHandlers={{
                   click: () => router.push(`/ville/${place.name}`),
                 }}
               />
-            )
+            ) : null
           })}
         ((!showAll && borders) && (
         <Polygon pathOptions={purpleOptions} positions={borders} />

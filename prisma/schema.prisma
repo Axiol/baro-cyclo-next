@@ -15,15 +15,14 @@ datasource db {
 model Place {
   id      String   @id @default(cuid())
   name    String
-  center  String
-  borders String   @db.LongText
+  geoData Json
   Review  Review[]
 }
 
 model Review {
   id           String   @id @default(cuid())
   creationDate DateTime @default(now())
-  score        String   @db.LongText
+  score        Json
   placeId      String
   place        Place    @relation(fields: [placeId], references: [id])
 }

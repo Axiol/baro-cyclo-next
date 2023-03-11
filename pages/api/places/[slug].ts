@@ -25,9 +25,6 @@ const place = async (req: NextApiRequest, res: NextApiResponse) => {
         return
       }
 
-      place.center = JSON.parse(place.center)
-      place.borders = JSON.parse(place.borders)
-
       res.json({ status: 200, place: place })
       break
   }
