@@ -7,9 +7,10 @@ import { PlaceProps } from '@interfaces/interfaces'
 import Map from '@components/Map'
 import Search from '@components/Search'
 import Summary from '@components/Summary'
+import { Place } from '@prisma/client'
 
 interface HomeProps {
-  places?: PlaceProps[]
+  places?: Place[]
 }
 
 export const getServerSideProps: GetStaticProps = async () => {
@@ -40,7 +41,7 @@ const Home: NextPage<HomeProps> = ({ places }) => {
 
   const handleSearchSelect = async (place: PlaceProps) => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places/${place._id}`,
+      `${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places/${place.id}`,
       {
         method: 'GET',
         headers: {
@@ -64,7 +65,6 @@ const Home: NextPage<HomeProps> = ({ places }) => {
         position={place?.center}
         borders={place?.borders}
         places={places}
-        onPlaceSelect={handlePlaceSelect}
         showAll={showAll}
       />
       <Search onPlaceSelect={handleSearchSelect} />
