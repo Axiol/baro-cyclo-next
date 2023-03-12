@@ -4,7 +4,26 @@ import { useState } from 'react'
 
 import RangeSelector from '@components/RangeSelector'
 
-const Review = ({ params }: { params: { slug: string } }) => {
+const getPlace = async (name: string) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_LOCAL_URL}/api/places/${name}`,
+    {
+      cache: 'no-store',
+    }
+  )
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  const data = await res.json()
+
+  return data.place
+}
+
+const Review = async ({ params }: { params: { slug: string } }) => {
+  const place = await getPlace(params.slug)
+
   const [page, setPage] = useState(1)
   const [values, setValues] = useState([
     [0, 0, 0, 0],
@@ -37,7 +56,7 @@ const Review = ({ params }: { params: { slug: string } }) => {
   return (
     <>
       <p className='text-center font-bold text-2xl mb-4'>
-        Laissez votre avis pour {decodeURI(params.slug)}
+        Laissez votre avis pour
       </p>
 
       {page === 1 && (
