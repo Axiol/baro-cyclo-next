@@ -64,7 +64,7 @@ const Map = ({
         {showAll &&
           places &&
           places.map((place) => {
-            const geoData = place.geoData as Prisma.JsonObject
+            const geoData = place?.geoData as Prisma.JsonObject
             return geoData ? (
               <Polygon
                 key={place.id}
