@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { use, useState } from 'react'
 
 import RangeSelector from '@components/RangeSelector'
 
@@ -21,9 +21,7 @@ const getPlace = async (name: string) => {
   return data.place
 }
 
-const Review = async ({ params }: { params: { slug: string } }) => {
-  const place = await getPlace(params.slug)
-
+const Review = ({ params }: { params: { slug: string } }) => {
   const [page, setPage] = useState(1)
   const [values, setValues] = useState([
     [0, 0, 0, 0],
@@ -32,6 +30,7 @@ const Review = async ({ params }: { params: { slug: string } }) => {
     [0, 0, 0, 0],
     [0, 0, 0, 0],
   ])
+  const place = use(getPlace(params.slug))
 
   const updateValue = (value: string, position: [number, number]) => {
     let newValues = [...values]
@@ -56,7 +55,7 @@ const Review = async ({ params }: { params: { slug: string } }) => {
   return (
     <>
       <p className='text-center font-bold text-2xl mb-4'>
-        Laissez votre avis pour
+        Laissez votre avis pour {place.name}
       </p>
 
       {page === 1 && (

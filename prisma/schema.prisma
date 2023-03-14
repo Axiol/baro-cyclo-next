@@ -13,10 +13,11 @@ datasource db {
 }
 
 model Place {
-  id      String   @id @default(cuid())
-  name    String
-  geoData Json
-  Review  Review[]
+  id            String   @id @default(cuid())
+  name          String
+  geoData       Json
+  reviewAverage Json
+  Review        Review[]
 }
 
 model Review {

@@ -24,12 +24,16 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
 const Place = async ({ params }: { params: { slug: string } }) => {
   const place = await getPlace(params.slug)
 
+  console.log(place)
+
   return (
     <>
       <div className='flex justify-between mb-4 items-center'>
         <div className='flex items-center'>
           <h2 className='text-xl font-extrabold'>{place.name}</h2>
-          <span className='inline-block ml-1'>- 3 avis</span>
+          <span className='inline-block ml-1'>
+            - {place.reviewAverage.reviews} avis
+          </span>
         </div>
         <Link
           href={'/'}
@@ -50,36 +54,36 @@ const Place = async ({ params }: { params: { slug: string } }) => {
       <h3 className='text-l font-extrabold'>Général</h3>
       <progress
         className='progress progress-info w-full mb-2'
-        value='35'
-        max='100'
+        value={place.reviewAverage.averageGeneral}
+        max='10'
       ></progress>
 
       <h3 className='text-l font-extrabold'>Confort</h3>
       <progress
         className='progress progress-info w-full mb-2'
-        value='60'
-        max='100'
+        value={place.reviewAverage.averageComfort}
+        max='10'
       ></progress>
 
       <h3 className='text-l font-extrabold'>Sécurité</h3>
       <progress
         className='progress progress-info w-full mb-2'
-        value='55'
-        max='100'
+        value={place.reviewAverage.averageSecurity}
+        max='10'
       ></progress>
 
       <h3 className='text-l font-extrabold'>Services</h3>
       <progress
         className='progress progress-info w-full mb-2'
-        value='20'
-        max='100'
+        value={place.reviewAverage.averageServices}
+        max='10'
       ></progress>
 
       <h3 className='text-l font-extrabold'>Efforts</h3>
       <progress
         className='progress progress-info w-full mb-2'
-        value='15'
-        max='100'
+        value={place.reviewAverage.averageEfforts}
+        max='10'
       ></progress>
     </>
   )

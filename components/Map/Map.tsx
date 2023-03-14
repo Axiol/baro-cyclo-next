@@ -49,8 +49,11 @@ const Map = ({
   const purpleOptions = { color: 'purple' }
 
   return (
-    <>
-      <MapContainer className='absolute inset-0 z-0' scrollWheelZoom={false}>
+    <div className='h-screen'>
+      <MapContainer
+        className='absolute inset-0 z-0 h-screen'
+        scrollWheelZoom={false}
+      >
         <TileLayer
           attribution='Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
           maxZoom={18}
@@ -81,7 +84,7 @@ const Map = ({
         ))
       </MapContainer>
       {children}
-    </>
+    </div>
   )
 }
 

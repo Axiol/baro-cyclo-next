@@ -30,6 +30,15 @@ const places = async (req: NextApiRequest, res: NextApiResponse) => {
               center: body.center,
               borders: body.borders,
             },
+            reviewAverage: {
+              reviews: 0,
+              average: 0,
+              averageGeneral: 0,
+              averageComfort: 0,
+              averageSecurity: 0,
+              averageServices: 0,
+              averageEfforts: 0,
+            },
           },
         })
         .catch(async (e) => {
