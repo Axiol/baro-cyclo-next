@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 
-const places = async (req: NextApiRequest, res: NextApiResponse) => {
+const review = async (req: NextApiRequest, res: NextApiResponse) => {
   const prisma = new PrismaClient()
 
   switch (req.method) {
@@ -20,7 +20,7 @@ const places = async (req: NextApiRequest, res: NextApiResponse) => {
         .create({
           data: {
             placeId: body.placeId,
-            score: JSON.stringify(body.score),
+            score: body.score,
           },
         })
         .catch(async (e) => {
@@ -37,4 +37,4 @@ const places = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 }
 
-export default places
+export default review
