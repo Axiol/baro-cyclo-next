@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
+import { calculateAverage } from './average/[id]'
 
 const review = async (req: NextApiRequest, res: NextApiResponse) => {
   const prisma = new PrismaClient()
@@ -31,6 +32,8 @@ const review = async (req: NextApiRequest, res: NextApiResponse) => {
           })
           return
         })
+
+      await calculateAverage(body.placeId)
 
       res.json({ status: 200, data: review })
       break
