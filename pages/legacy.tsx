@@ -67,7 +67,7 @@ const Home: NextPage<HomeProps> = ({ places }) => {
         places={places}
         showAll={showAll}
       />
-      <Search onPlaceSelect={handleSearchSelect} />
+      <Search />
       {!showAll && <Summary name={place?.name} />}
     </div>
   )
