@@ -4,12 +4,9 @@ import { useEffect, useState } from 'react'
 
 import Card from '@components/Card'
 import { PlaceProps } from '@interfaces/interfaces'
+import Link from 'next/link'
 
-interface SearchProps {
-  onPlaceSelect?: (place: PlaceProps) => void
-}
-
-const Search: React.FC<SearchProps> = ({ onPlaceSelect }) => {
+const Search = () => {
   const [query, setQuery] = useState<string>('')
   const [search, setSearch] = useState<PlaceProps[]>([])
 
@@ -51,16 +48,16 @@ const Search: React.FC<SearchProps> = ({ onPlaceSelect }) => {
             {search.map((place, index) => {
               return (
                 <li key={index}>
-                  <button
+                  <Link
+                    href={`/ville/${place.name}`}
                     onClick={() => {
                       setSearch([])
                       setQuery('')
-                      // onPlaceSelect(place);
                     }}
                     className='w-full text-left py-3 text-secondary hover:text-secondary-focus focus:text-secondary-focus'
                   >
                     {place.name}
-                  </button>
+                  </Link>
                   {index + 1 < search.length && <hr className='' />}
                 </li>
               )
