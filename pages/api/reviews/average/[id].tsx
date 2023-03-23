@@ -89,6 +89,15 @@ const averageReviews = async (req: NextApiRequest, res: NextApiResponse) => {
           reviewAverage.averageEfforts) /
         5
 
+      await prisma.place.updateMany({
+        where: {
+          id: slug as string,
+        },
+        data: {
+          reviewAverage: reviewAverage,
+        },
+      })
+
       res.json({ status: 200, data: reviewAverage })
       break
   }
