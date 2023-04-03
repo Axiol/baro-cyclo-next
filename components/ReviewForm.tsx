@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from 'react'
 import RangeSelector from '@components/RangeSelector'
 import { ReviewScore } from '@interfaces/interfaces'
 import { Place } from '@prisma/client'
+import { signOut } from 'next-auth/react'
 
 interface ReviewFormProps {
   place: Place
@@ -71,6 +72,8 @@ const ReviewForm = ({ place, onSave }: ReviewFormProps) => {
       <p className='text-center font-bold text-2xl mb-4'>
         Laissez votre avis pour {place.name}
       </p>
+
+      <button onClick={() => signOut()}>Se connecter avec GitHub</button>
 
       {page === 1 && (
         <div className='flex flex-col space-y-6'>

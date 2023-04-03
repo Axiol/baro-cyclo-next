@@ -46,6 +46,8 @@ const saveReview = async (id: string, score: ReviewScore) => {
 }
 
 const Review = ({ params }: { params: { slug: string } }) => {
+  // const session = await getServerSession(authOptions)
+  // console.log(session)
   const place = use(getPlace(params.slug))
 
   return <ReviewForm place={place} onSave={saveReview} />
