@@ -73,7 +73,7 @@ const ReviewForm = ({ place, onSave }: ReviewFormProps) => {
         Laissez votre avis pour {place.name}
       </p>
 
-      <button onClick={() => signOut()}>Se connecter avec GitHub</button>
+      <button onClick={() => signOut()}>Se déconnecter</button>
 
       {page === 1 && (
         <div className='flex flex-col space-y-6'>

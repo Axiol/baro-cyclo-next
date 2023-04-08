@@ -18,9 +18,14 @@ const Login = () => {
           Se connecter avec Twitter
         </button>
       </div>
-      <div className='text-center'>
+      <div className='text-center mb-3'>
         <button className='btn' onClick={() => signIn('facebook')}>
           Se connecter avec Facebook
+        </button>
+      </div>
+      <div className='text-center'>
+        <button className='btn' onClick={() => signIn('google')}>
+          Se connecter avec Google
         </button>
       </div>
     </>
