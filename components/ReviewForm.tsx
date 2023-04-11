@@ -82,33 +82,33 @@ const ReviewForm = ({ place, onSave }: ReviewFormProps) => {
             name='general.moving'
             value={values.general.moving}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Désagréable'
+            maxLabel='Agréable'
+            label='De manière générale, comment trouvé vous le déplacement ?'
           />
           <RangeSelector
             name='general.network'
             value={values.general.network}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Non'
+            maxLabel='Oui'
+            label='Estimez-vous que le réseau de pistes cyclable est correct ?'
           />
           <RangeSelector
             name='general.conflict_pedestrian'
             value={values.general.conflict_pedestrian}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Souvent'
+            maxLabel='Rarement'
+            label='À quelle fréquence entrez-vous en conflit avec des piétons'
           />
           <RangeSelector
             name='general.conflict_motor'
             value={values.general.conflict_motor}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Souvent'
+            maxLabel='Rarement'
+            label='À quelle fréquence entrez-vous en conflit avec des véhicules motorisés'
           />
         </div>
       )}
@@ -120,33 +120,33 @@ const ReviewForm = ({ place, onSave }: ReviewFormProps) => {
             name='comfort.comfort'
             value={values.comfort.comfort}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Pas confortables'
+            maxLabel='Confortables'
+            label='À quel point trouvez-vous vos itinéraire confortables'
           />
           <RangeSelector
             name='comfort.maintained'
             value={values.comfort.maintained}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Pas entretenus'
+            maxLabel='Entretenus'
+            label='À quel point trouvez-vous vos itinéraire entretenus'
           />
           <RangeSelector
             name='comfort.signage'
             value={values.comfort.signage}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Non'
+            maxLabel='Oui'
+            label='Trouvez-vous la signalétique adaptée ?'
           />
           <RangeSelector
             name='comfort.road_work'
             value={values.comfort.road_work}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Jamais'
+            maxLabel='Toujours'
+            label='Y-a-t il des arlternives mises en place lors de travaux ?'
           />
         </div>
       )}
@@ -158,41 +158,41 @@ const ReviewForm = ({ place, onSave }: ReviewFormProps) => {
             name='security.security'
             value={values.security.security}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Non'
+            maxLabel='Oui'
+            label='De manière générale, vous sentez-vous en sécurité ?'
           />
           <RangeSelector
             name='security.big_roads'
             value={values.security.big_roads}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Non'
+            maxLabel='Oui'
+            label='Vous sentez-vous en sécurité sur les grands axes ?'
           />
           <RangeSelector
             name='security.small_roads'
             value={values.security.small_roads}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Non'
+            maxLabel='Oui'
+            label='Vous sentez-vous en sécurité dans les quartiers résidentiels ?'
           />
           <RangeSelector
             name='security.connections'
             value={values.security.connections}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Difficile'
+            maxLabel='Facile'
+            label='À quel point est-il facile de rejoindre une ville voisine ?'
           />
           <RangeSelector
             name='security.thefts'
             value={values.security.thefts}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Fréquents'
+            maxLabel='Rares'
+            label='Les vols sont ils fréquents ?'
           />
         </div>
       )}
@@ -204,33 +204,33 @@ const ReviewForm = ({ place, onSave }: ReviewFormProps) => {
             name='services.parking'
             value={values.services.parking}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Non'
+            maxLabel='Oui'
+            label='Est-il facile de trouver un parking sécurisé ?'
           />
           <RangeSelector
             name='services.public_transport'
             value={values.services.public_transport}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Non'
+            maxLabel='Oui'
+            label='La transition avec les transports en commun (bus, train, ...) est elle facile ?'
           />
           <RangeSelector
             name='services.renting'
             value={values.services.renting}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Impossible'
+            maxLabel='Facile'
+            label='Comment est la location de vélo ?'
           />
           <RangeSelector
             name='services.shops'
             value={values.services.shops}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Non'
+            maxLabel='Oui'
+            label='Des ateliers de réparation sont-ils facilement accessibles ?'
           />
         </div>
       )}
@@ -242,33 +242,33 @@ const ReviewForm = ({ place, onSave }: ReviewFormProps) => {
             name='efforts.efforts'
             value={values.efforts.efforts}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Inexistants'
+            maxLabel='Importants'
+            label='Comment jugez-vous les efforts fait pour la mobilité douce ?'
           />
           <RangeSelector
             name='efforts.communication'
             value={values.efforts.communication}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Non'
+            maxLabel='Oui'
+            label='Une communication active en faveur de la mobilité douce est elle faite ?'
           />
           <RangeSelector
             name='efforts.burgomaster'
             value={values.efforts.burgomaster}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Non'
+            maxLabel='Oui'
+            label='Jugez-vous le bourguemestre à lécoute ?'
           />
           <RangeSelector
             name='efforts.cars_tickets'
             value={values.efforts.cars_tickets}
             onChange={updateValue}
-            minLabel='min'
-            maxLabel='max'
-            label='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem sem, ultricies lacinia ex non, blandit fringilla nisi'
+            minLabel='Rarement'
+            maxLabel='Fréquement'
+            label='À quelle fréquence des automobilistes se garent-ils sur les pistes cyclables ?'
           />
         </div>
       )}
