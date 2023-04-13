@@ -11,7 +11,7 @@ const layoutReview = async ({
   params: { slug: string }
 }) => {
   const session = await getServerSession(authOptions)
-  console.log(session)
+  // console.log(session)
 
   return (
     <div className='absolute inset-0 z-20 flex justify-center items-center'>
